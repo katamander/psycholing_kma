@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # create virtual environment
 #python -m venv env
 
@@ -5,7 +6,7 @@
 #source ./env/bin/activate
 
 # install requirements
-pip install -r requirements.txt
+pip install -r /work/E2026/psycholing_kma/requirements.txt
 
 # deactivate virtual environment
 #deactivate
