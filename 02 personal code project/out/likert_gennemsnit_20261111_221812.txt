@@ -1,0 +1,4 @@
+Spørgsmål	Gennemsnit (1-5)	Std. afvigelse	Antal svar (N)
+Sprogopbygning (conlangs)	4.11	0.75	53
+Brugbart	3.21	0.93	53
+Lingvistik generelt	4.25	0.73	55
