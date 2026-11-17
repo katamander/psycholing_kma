@@ -1,4 +1,4 @@
-## assignment 2: personal code project - workshop feedback analyser
+### assignment 2a: personal code project - workshop feedback analysis
 
 
 # import
@@ -42,6 +42,7 @@ def main():
         visualise_interest(df, col, ts)
     # export comments
     export_comments(df, ts)
+    print("Bar charts, Likert summary, and comment list saved to /out!")
 
 
 # define subfunctions
@@ -155,12 +156,14 @@ def visualise_likert(df, col, ts):
                                 "Meget uenig": "#d62728", "Ved ikke": "#7f7f7f"},
                      hue = "response",
                      legend = False)
+    # remove top and right lines
+    sns.despine()
     # set x-axis limits
     plt.xlim(0, 100)
     # add values to each bar
     labels = [f"{pct}% (N = {count})" for pct, count in zip(table["pct"], table["count"])]
     for container, label in zip(ax.containers, labels):
-        ax.bar_label(container, labels=[label], padding=5)
+        ax.bar_label(container, labels = [label], padding = 5)
     # set title & labels
     if col == "likert_ca":
         title = "Jeg har lært noget om, hvad samtaleanalyse er og kan bruges til"
@@ -183,7 +186,7 @@ def visualise_likert(df, col, ts):
     plt.ylabel("")
     # save to png
     plt.tight_layout()
-    plt.savefig(os.path.join(OUT_DIR, f"{col}_{ts}.png"))
+    plt.savefig(os.path.join(OUT_DIR, f"{col}_{ts}.png"), bbox_inches = "tight")
     plt.close()
 
 def visualise_interest(df, col, ts):
@@ -200,12 +203,14 @@ def visualise_interest(df, col, ts):
                                 "Nej": "#d62728", "Jeg var interesseret i forvejen": "#7f7f7f"},
                      hue = "response",
                      legend = False)
+    # remove top and right lines
+    sns.despine()
     # set x-axis limits
     plt.xlim(0, 100)
     # add values to each bar
     labels = [f"{pct}% (N = {count})" for pct, count in zip(table["pct"], table["count"])]
     for container, label in zip(ax.containers, labels):
-        ax.bar_label(container, labels=[label], padding=5)
+        ax.bar_label(container, labels = [label], padding = 5)
     # set title & labels
     if col == "interesse_lingvistik":
         title = "Har workshoppen eller oplægget gjort dig interesseret i hovedemnet eller lingvistik generelt?"
@@ -220,7 +225,7 @@ def visualise_interest(df, col, ts):
     plt.ylabel("")
     # save to png
     plt.tight_layout()
-    plt.savefig(os.path.join(OUT_DIR, f"{col}_{ts}.png"))
+    plt.savefig(os.path.join(OUT_DIR, f"{col}_{ts}.png"), bbox_inches = "tight")
     plt.close()
 
 def export_comments(df, ts):
